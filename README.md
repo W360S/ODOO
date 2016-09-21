@@ -43,6 +43,8 @@ After installing apache on your machine, you need to enable some modes by execut
  
 ~# sudo a2enmod proxy proxy_http
 
+do following the tutorial http://www.surekhatech.com/blog/configure-apache-web-server-with-odoo
+
 Enable odoo data filter
 
 ~# cd /etc/odoo/ && vim openerp-server.conf
