@@ -31,6 +31,8 @@ iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 80
 
 iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 443 -j REDIRECT --to-port 8070
 
+then save
+
 Configure Apache Web Server with Odoo
 
 ~# apt-get update && apt-get upgrade -y
@@ -40,3 +42,15 @@ Configure Apache Web Server with Odoo
 After installing apache on your machine, you need to enable some modes by executing below commands.
  
 ~# sudo a2enmod proxy proxy_http
+
+Enable odoo data filter
+
+~# cd /etc/odoo/ && vim openerp-server.conf
+
+Find replace 2 line below
+
+dbfilter = ^%h$
+
+list_db = False
+
+then save
