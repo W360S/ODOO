@@ -19,7 +19,7 @@ $ echo "deb http://nightly.odoo.com/9.0/nightly/deb/ ./" >> /etc/apt/sources.lis
 
 $ apt-get update && apt-get upgrade -y
 
-$ apt-get install odoo
+$ apt-get install odoo -y
 
 config runing port 80 & 443
 
