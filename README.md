@@ -39,4 +39,4 @@ Configure Apache Web Server with Odoo
 
 After installing apache on your machine, you need to enable some modes by executing below commands.
  
-# sudo a2enmod proxy proxy_http
+$ sudo a2enmod proxy proxy_http
