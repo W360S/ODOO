@@ -1,3 +1,7 @@
+enable technical feature
+
+go to setting > views > search login
+
 <?xml version="1.0"?>
 <t name="Login Layout" t-name="web.login_layout">
             <t t-call="web.layout">
