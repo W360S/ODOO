@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<t name="Login Layout" t-name="web.login_layout">
+            <t t-call="web.layout">
+                <t t-set="head">
+                  <link rel="stylesheet" href="/web/static/lib/bootstrap/css/bootstrap.css"/>
+                  <link rel="stylesheet" href="/web/static/lib/fontawesome/css/font-awesome.css"/>
+                  <script src="/web/static/lib/jquery/jquery.js" type="text/javascript"/>
+                </t>
+                <t t-set="body_classname" t-value="'container'"/>
+                <div class="row">
+                  <div class="col-md-6 col-md-offset-3 o_database_list">
+                    <div class="text-center">
+                      <img t-attf-src="/web/binary/company_logo{{ '?dbname='+db if db else '' }}"/>
+                    </div>
+                    <t t-raw="0"/>
+                   <!--  <div class="text-center" t-if="not disable_footer">
+                        <t t-if="not disable_database_manager">
+                            <a class="" href="/web/database/manager">Manage Databases</a> |
+                        </t>
+                        <a href="https://www.odoo.com" target="_blank">Powered by <span>Odoo</span></a>
+                    </div> -->
+
+                  </div>
+                </div>
+            </t>
+        </t>
