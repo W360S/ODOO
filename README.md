@@ -62,6 +62,7 @@ Download & Settup wkhtmltopdf
 Remove existing installation if settup before & error
 
 ~# sudo apt-get remove --purge wkhtmltopdf
+~# sudo apt-get autoremove --purge wkhtmltopdf -y
 
 Download wkhtmltopdf patched with qt using below command
 
