@@ -33,7 +33,6 @@ config runing port 80 & 443
 add 2 line bellow at the end of rc.local
 
 iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 8069
-
 iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 443 -j REDIRECT --to-port 8070
 
 then save
@@ -58,9 +57,8 @@ add following code to rc.local file.
 # By default this script does nothing.
 
 iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 8069
-
 iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 443 -j REDIRECT --to-port 8070
-
 exit 0
+
 then saved file & reboot.
 
