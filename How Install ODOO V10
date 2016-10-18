@@ -40,6 +40,7 @@ then save
 if the rc.local doesn't exsit just create rc.local file then run commend:
 
 chmod +x /etc/rc.local
+sh /etc/rc.local
 
 add following code to rc.local file.
 
