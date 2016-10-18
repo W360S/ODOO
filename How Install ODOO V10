@@ -26,3 +26,41 @@ Install ODOO V10
 install wkhtmltopdf
 # apt-get install wkhtmltopdf -y
 test wkhtmltopdf http://google.com google.pdf
+config runing port 80 & 443
+
+~# vim /etc/rc.local
+
+add 2 line bellow at the end of rc.local
+
+iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 8069
+
+iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 443 -j REDIRECT --to-port 8070
+
+then save
+
+if the rc.local doesn't exsit just create rc.local file then run commend:
+
+chmod +x /etc/rc.local
+
+add following code to rc.local file.
+
+#!/bin/sh -e
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
+
+iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 8069
+
+iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 443 -j REDIRECT --to-port 8070
+
+exit 0
+then saved file & reboot.
+
