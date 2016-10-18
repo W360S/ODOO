@@ -61,4 +61,16 @@ iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 443 -j REDIRECT --to-port 8
 exit 0
 
 then saved file & reboot.
+Enable odoo data filter
 
+~# cd /etc/odoo/ && vim openerp-server.conf
+
+Find replace 2 line below
+
+dbfilter = ^%h$ for domain example: http://domain.com
+or 
+dbfilter = ^%h$ for domain example: http://www.domain.com
+
+list_db = False
+
+then save
