@@ -69,7 +69,7 @@ Find replace 2 line below
 
 dbfilter = ^%h$ for domain example: http://domain.com
 or 
-dbfilter = ^%h$ for domain example: http://www.domain.com
+dbfilter = ^%d$ for subdomain example: http://www.domain.com
 
 list_db = False
 
