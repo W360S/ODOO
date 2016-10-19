@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<data inherit_id="website.layout" name="Footer Copyright">
+    <xpath expr="//footer" position="inside">
+        <div class="container mt16 mb8">
+            <div class="pull-right" t-ignore="true" t-if="not editable">  
+                Powered by <a class="label label-danger" href="http://www.w360s.com/">W360S CORP</a>,
+                | SỐ #1 <a href="http://www.w360s.vn">GIẢI PHÁP QUẢN TRỊ DOANH NGHIỆP</a>.
+            </div>
+            <div class="pull-left text-muted" itemscope="itemscope" itemtype="http://schema.org/Organization">
+                Copyright &amp;copy; <span t-field="res_company.name" itemprop="name">Company name</span>
+            </div>
+        </div>
+    </xpath>
+</data>
