@@ -1,0 +1,4 @@
+Make sure you do what you need to do as administrator and setup your own user to easily manage users.
+Get into developer mode (under the about Odoo menu).
+Go to the user list in Odoo (where you want to hide the administrator account)
+Choose action under the developer menu above the form and in the domain field put  [('name','!=','Administrator')]  (naturally if you have a different name you should put it here)
