@@ -83,7 +83,7 @@ exit 0
 then saved file & reboot.
 Enable odoo data filter
 
-~# cd /etc/odoo/ && vim openerp-server.conf
+~# cd /etc/odoo/ && vim odoo.conf
 
 Find replace 2 line below
 
@@ -94,3 +94,6 @@ dbfilter = ^%d$ for subdomain example: http://www.domain.com
 list_db = False
 
 then save
+or install nginx
+# apt-get install nginx
+follow the tutrials http://www.tecmint.com/install-openerp-odoo-with-nginx-on-centos-and-debian/
