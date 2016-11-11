@@ -17,6 +17,8 @@ deb http://us.archive.ubuntu.com/ubuntu vivid main universe
 install node js
 curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 ~# sudo apt-get install -y nodejs
+install less
+~# sudo npm install -g less
 
 Install ODOO V10
 # wget -O - https://nightly.odoo.com/odoo.key | apt-key add -
