@@ -9,8 +9,7 @@ first install python
 
 install python-pybabel
 add link below to source and save
-~# vim /etc/apt/sources.list
-deb http://us.archive.ubuntu.com/ubuntu vivid main universe
+echo "deb http://us.archive.ubuntu.com/ubuntu vivid main universe" >> /etc/apt/sources.list
 ~# sudo apt-get update -y
 ~# sudo apt-get install python-pybabel -y
 
