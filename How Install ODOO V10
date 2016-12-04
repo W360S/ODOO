@@ -97,4 +97,5 @@ list_db = False
 then save
 or install nginx
 # apt-get install nginx
-follow the tutrials http://www.tecmint.com/install-openerp-odoo-with-nginx-on-centos-and-debian/
+follow the tutrials http://www.tecmint.com/install-openerp-odoo-with-nginx-on-centos-and-debian
+sudo ln -s /etc/nginx/sites-available/w360s.com.vn /etc/nginx/sites-enabled/w360s.com.vn
