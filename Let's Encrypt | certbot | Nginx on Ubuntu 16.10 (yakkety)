@@ -1,0 +1,75 @@
+step 1 install let's encrypt | certbot 
+
+$ sudo apt-get update -y && apt-get dist-upgrade -y && apt-get autoremove -y
+
+$ sudo apt-get install certbot
+
+step 2 generate ssl keys
+
+$ certbot certonly
+
+then flow step to generate ssl keys
+
+your ssl key will be store in /etc/letsencrypt/live/your_domain_name/fullchain.pem
+
+for more details go here: https://certbot.eff.org/#ubuntutyakkety-nginx
+
+Step 3 Install and Configure Nginx
+
+$ sudo apt-get install nginx
+
+Create Nginx server block
+
+$ sudo vim /etc/nginx/sites-available/your_domain_name
+
+paste following config
+
+upstream oddo {
+    server 127.0.0.1:8069;
+}
+
+server {
+    listen      443 default;
+    server_name yourOdooSite.com;
+
+    access_log  /var/log/nginx/oddo.access.log;
+    error_log   /var/log/nginx/oddo.error.log;
+
+    ssl on;
+    ssl_certificate     /etc/nginx/ssl/server.crt;
+    ssl_certificate_key /etc/nginx/ssl/server.key;
+    keepalive_timeout   60;
+
+    ssl_ciphers             HIGH:!ADH:!MD5;
+    ssl_protocols           SSLv3 TLSv1;
+    ssl_prefer_server_ciphers on;
+
+    proxy_buffers 16 64k;
+    proxy_buffer_size 128k;
+
+    location / {
+        proxy_pass  http://oddo;
+        proxy_next_upstream error timeout invalid_header http_500 http_502 http_503 http_504;
+        proxy_redirect off;
+
+        proxy_set_header    Host            $host;
+        proxy_set_header    X-Real-IP       $remote_addr;
+        proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header    X-Forwarded-Proto https;
+    }
+
+    location ~* /web/static/ {
+        proxy_cache_valid 200 60m;
+        proxy_buffering on;
+        expires 864000;
+        proxy_pass http://oddo;
+    }
+}
+
+server {
+    listen      80;
+    server_name yourOdooSite.com;
+
+    add_header Strict-Transport-Security max-age=2592000;
+    rewrite ^/.*$ https://$host$request_uri? permanent;
+}
