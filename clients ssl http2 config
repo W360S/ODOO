@@ -1,6 +1,6 @@
 server {
     listen 443;
-    listen [::]:443;
+    listen [::]:443;    
     server_name server.sangtao.xyz;
 
     ssl on;
@@ -44,7 +44,7 @@ server {
 
         # By default, do not forward anything
         proxy_redirect          off;
-   }
+    }
 
     # Cache some static data in memory for 60mins.
     # under heavy load this should relieve stress on the Odoo web interface a bit.
