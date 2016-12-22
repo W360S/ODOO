@@ -83,6 +83,10 @@ server {
 }
 #replace your domain where are sangtao.xyz then start nginx it will work.
 
+step 6:
+#create alias on your server:
+sudo ln -s /etc/nginx/sites-available/your_domain_name.xyz /etc/nginx/sites-enabled/your_domain_name.xyz
+service nginx restart && service odoo restart
 
 
 
