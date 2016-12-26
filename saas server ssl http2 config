@@ -55,3 +55,4 @@ server {
     server_name  sangtao.xyz;
     add_header Strict-Transport-Security "max-age=31536000; includeSubDomains";
     rewrite ^/.*$ https://www.sangtao.xyz$request_uri? permanent;
+    }
