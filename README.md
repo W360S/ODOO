@@ -66,7 +66,8 @@ Remove existing installation if settup before & error
 ~# sudo apt-get autoremove --purge wkhtmltopdf -y
 
 Download wkhtmltopdf patched with qt using below command
-sudo wget -P Downloads ://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.1/wkhtmltox-0.12.1_linux-trusty-amd64.deb
+sudo wget -P Downloads https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.1/wkhtmltox-0.12.1_linux-trusty-amd64.deb
+
 or other sources store here:
 sudo wget -P Downloads http://download.gna.org/wkhtmltopdf/0.12/0.12.1/wkhtmltox-0.12.1_linux-trusty-amd64.deb
 
