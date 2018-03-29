@@ -1,0 +1,100 @@
+Install ODOO V10
+
+first install python
+~# apt-get update -y && apt-get upgrade -y
+~# sudo apt-get install postgresql -y
+~# sudo apt-get update -y
+
+install node js
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+~# sudo apt-get install -y nodejs
+install less
+~# sudo npm install -g less
+
+Install ODOO V11
+# wget -O - https://nightly.odoo.com/odoo.key | apt-key add -
+# echo "deb http://nightly.odoo.com/11.0/nightly/deb/ ./" >> /etc/apt/sources.list
+# apt-get update && apt-get install odoo -y
+# apt-get update -y && apt-get upgrade -y
+
+install wkhtmltopdf
+# apt-get install wkhtmltopdf -y
+test wkhtmltopdf http://google.com google.pdf
+if not success try:
+Download & Settup wkhtmltopdf
+
+Remove existing installation if settup before & error
+~# sudo apt-get remove --purge wkhtmltopdf
+~# sudo apt-get autoremove --purge wkhtmltopdf -y
+Download wkhtmltopdf patched with qt using below command
+sudo wget -P Downloads http://ftp.us.debian.org/debian/pool/main/libp/libpng/libpng12-0_1.2.50-2+deb8u2_amd64.deb
+sudo wget -P Downloads http://download.gna.org/wkhtmltopdf/0.12/0.12.1/wkhtmltox-0.12.1_linux-trusty-amd64.deb
+replace "trusty" with your OS name (Your VPS Name) and if 64 bit only then keep "amd64" like that, otherwise change it to "i386" and down load the deb file.
+
+After that execute the following commands,
+cd ~/Downloads
+~# sudo dpkg -i libpng12-0_1.2.50-2+deb8u2_amd64.deb
+~# sudo dpkg -i wkhtmltox-0.12.1_linux-YOUR OS NAME-amd64.deb
+Now, check wkhtmltopdf version with below command,
+wkhtmltopdf -V
+
+
+config runing port 80 & 443
+
+~# vim /etc/rc.local
+
+add 2 line bellow at the end of rc.local
+
+iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 8069
+iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 443 -j REDIRECT --to-port 8070
+
+then save
+
+if the rc.local doesn't exsit just create rc.local file then run commend:
+
+chmod +x /etc/rc.local
+sh /etc/rc.local
+
+add following code to rc.local file.
+
+#!/bin/sh -e
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
+iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 8069
+iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 443 -j REDIRECT --to-port 8070
+exit 0
+
+then saved file & reboot.
+Enable odoo data filter
+
+~# cd /etc/odoo/ && vim odoo.conf
+
+Find replace 2 line below
+
+dbfilter = ^%h$ for domain example: http://domain.com
+or 
+dbfilter = ^%d$ for subdomain example: http://www.domain.com
+
+list_db = False
+
+then save
+or install nginx
+# apt-get install nginx
+follow the tutrials http://www.tecmint.com/install-openerp-odoo-with-nginx-on-centos-and-debian
+sudo ln -s /etc/nginx/sites-available/w360s.com.vn /etc/nginx/sites-enabled/w360s.com.vn
+for installing saas:
+clone saas from: git clone -b 11.0 https://github.com/it-projects-llc/odoo-saas-tools.git
+install all dependencies related to saas.
+give config saas path to map saas with odoo addons.
+restart odoo.
+go to your ip address. create db like tut: https://odoo-saas-tools.readthedocs.io/en/11.0/
+and here: http://it-projects-llc.github.io/odoo-saas-tools/getting-started/
