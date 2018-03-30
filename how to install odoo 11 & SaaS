@@ -1,4 +1,4 @@
-Install ODOO V10
+Install ODOO V11
 
 first install python
 ~# apt-get update -y && apt-get upgrade -y
