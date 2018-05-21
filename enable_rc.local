@@ -1,0 +1,22 @@
+vim /etc/rc.local
+
+add 2 line bellow at the end of rc.local
+
+iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 8069
+
+iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 443 -j REDIRECT --to-port 8070
+
+then save
+
+sudo chmod +x /etc/rc.local
+head -n1 /etc/rc.local
+sudo systemctl start  rc-local.service
+
+sudo systemctl status rc-local.service
+● rc-local.service - /etc/rc.local Compatibility
+   Loaded: loaded (/lib/systemd/system/rc-local.service; enabled-runtime; vendor preset: enabled)
+  Drop-In: /lib/systemd/system/rc-local.service.d
+           └─debian.conf
+   Active: active (exited) since Mon 2018-05-21 07:25:28 UTC; 4s ago
+     Docs: man:systemd-rc-local-generator(8)
+  Process: 11293 ExecStart=/etc/rc.local start (code=exited, status=0/SUCCESS)
